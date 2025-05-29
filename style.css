@@ -1,0 +1,411 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: #FFD60D;
+}
+
+body {
+    margin: 20px;
+}
+
+.link {
+  display: block;             /* Stack vertically */
+  width: fit-content;         /* Shrink to text width */
+  position: relative;
+  font-family: "dejanire-text", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  cursor: pointer;
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+
+.link-left::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: black;
+
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.4s ease-in-out;
+}
+
+.link-left:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Right to left underline */
+.link-right::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: black;
+
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  transition: transform 0.4s ease-in-out;
+}
+
+.link-right:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom right;
+}
+
+.link-2 {
+  display: block;
+  width: fit-content;
+  position: relative;
+  font-family: "dejanire-text", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  cursor: pointer;
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+
+/* Solid underline */
+.link-2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: black;
+  z-index: 1;
+}
+
+/* Moving "#FFD60D gap" */
+.link-2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -30px;
+  width: 30px;
+  height: 1px;
+  background-color: #FFD60D;
+  z-index: 2;
+  opacity: 0;
+}
+
+/* When hovered, apply two animations: one for left, one for width */
+.link-2:hover::after {
+  opacity: 1;
+  animation:
+    moveEraser 0.8s ease-in-out forwards,
+    growShrink 0.8s ease-in-out forwards;
+}
+
+.link-3 {
+  display: block;
+  width: fit-content;
+  position: relative;
+  font-family: "dejanire-text", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  cursor: pointer;
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+
+/* Solid underline */
+.link-3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: black;
+  z-index: 1;
+}
+
+/* Moving "#FFD60D gap" */
+.link-3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -30px;
+  width: 30px;
+  height: 1px;
+  background-color: #FFD60D;
+  z-index: 2;
+  opacity: 0;
+}
+
+.link-3:hover::after {
+  opacity: 1;
+  animation: pingpongWipe 0.9s ease-in-out infinite alternate;
+}
+
+.link-4 {
+  display: block;
+  width: fit-content;
+  position: relative;
+  font-family: "dejanire-text", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  cursor: pointer;
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+
+/* Solid underline */
+.link-4::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: black;
+  z-index: 1;
+}
+
+.link-4::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%; /* full width to scale from */
+  height: 1px;
+  background-color: #FFD60D;
+  z-index: 2;
+  opacity: 0;
+
+  transform: scaleX(0);
+  transform-origin: center; /* key to make it grow/shrink from center */
+}
+
+.link-4:hover::after {
+  opacity: 1;
+  animation: growFromCenter 0.9s ease-in-out forwards;
+}
+
+.link-5 {
+  display: block;
+  width: fit-content;
+  position: relative;
+  font-family: "dejanire-text", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  cursor: pointer;
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+
+/* Solid underline */
+.link-5::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: black;
+  z-index: 1;
+}
+
+.link-5::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%; /* full width to scale from */
+  height: 1px;
+  background-color: #FFD60D;
+  z-index: 2;
+  opacity: 0;
+
+  transform: scaleX(0);
+  transform-origin: left; /* key to make it grow/shrink from center */
+}
+
+.link-5:hover::after {
+  opacity: 1;
+  animation: growFromLeft 0.4s ease-in-out 2 alternate;
+  
+}
+
+/* Animation for left (movement) */
+@keyframes moveEraser {
+  0%   { left: -30px; }
+  100% { left: 100%; }
+}
+
+/* Animation for width (scale) */
+@keyframes growShrink {
+  0%   { width: 2px; }
+  50%  { width: 50px; }
+  100% { width: 2px; }
+}
+
+@keyframes pingpongWipe {
+  0% {
+    left: -30px;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes growFromCenter {
+  0% {
+    transform: scaleX(0);
+  }
+  50% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes growFromLeft {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.take-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.right-text {
+    font-family: "degular-mono", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+    transition: transform 0.6s ease;
+    z-index: 1;
+}
+
+.arrow-in {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%) translateX(-100%);
+  opacity: 0;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  z-index: 0;
+}
+
+/* ARROW OUT (right side) */
+.arrow-out {
+  transform-origin: right;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  z-index: 1;
+}
+
+/* HOVER EFFECTS */
+.take-right:hover .right-text {
+  transform: translateX(60px); /* moves text toward right arrow's space */
+}
+
+.take-right:hover .arrow-out {
+  transform: scaleX(0);
+  opacity: 0;
+}
+
+.take-right:hover .arrow-in {
+  transform: translateY(-50%) translateX(0);
+  opacity: 1;
+}
+
+
+/* Second Method */
+.take-right-2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.right-text-2 {
+    font-family: "degular-mono", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+    transition: transform 0.6s ease;
+    z-index: 1;
+}
+
+.arrow-slot {
+    position: relative;
+}
+
+.arrow-in-2 {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%) translateX(-100%);
+  opacity: 0;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  z-index: 0;
+}
+
+/* ARROW OUT (right side) */
+.arrow-out-2 {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%) translateX(0);
+  opacity: 1;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  z-index: 1;
+}
+
+/* HOVER EFFECTS */
+.take-right-2:hover .right-text-2 {
+  transform: translateX(60px); /* moves text toward right arrow's space */
+}
+
+.take-right-2:hover .arrow-out-2 {
+  transform: translateY(-50%) translateX(100%);
+  opacity: 0;
+}
+
+.take-right-2:hover .arrow-in-2 {
+  transform: translateY(-50%) translateX(0);
+  opacity: 1;
+}
+
+.right-text-3-container {
+    position: relative;
+}
+
+.right-text-3 {
+    font-family: "degular-mono", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+    transition: transform 0.6s ease;
+    z-index: 1;
+    position: relative;
+    left: 55px;
+    top: 50%;
+    transform: translateY(0%);
+}
+
+.take-right-2:hover .right-text-3 {
+  transform: translateX(-60px); /* moves text toward right arrow's space */
+}
