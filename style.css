@@ -406,6 +406,34 @@ body {
     transform: translateY(0%);
 }
 
+.arrow-out-3 {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%) translateX(0);
+  opacity: 1;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  z-index: 1;
+}
+
+.take-right-2:hover .arrow-out-3 {
+  transform: translateY(-50%) translateX(-100%);
+  opacity: 0;
+}
+
+.arrow-in-3 {
+  transform-origin: right;
+  
+  opacity: 0;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  z-index: 1;
+}
+
+.take-right-2:hover .arrow-in-3 {
+  transform: scaleX(100%);
+  opacity: 1;
+}
+
 .take-right-2:hover .right-text-3 {
   transform: translateX(-60px); /* moves text toward right arrow's space */
 }
